@@ -1,0 +1,13 @@
+{
+    "display_name": "Screen Sharing",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [
+    ],
+    "generate_interceptor": "extension_ScreenShare_interceptor",
+    "js": "index.js",
+    "css": "",
+    "author": "Cohee1207",
+    "version": "1.0.0",
+    "homePage": "https://github.com/Cohee1207/Extension-ScreenShare"
+}
