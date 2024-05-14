@@ -139,7 +139,7 @@ async function grabFrame(chat) {
         reader.readAsDataURL(blob);
     });
 
-    console.log('launchScreenShare: sending frame to chat', base64);
+    console.log('launchScreenShare: sending frame to chat');
     lastChatMessage.extra.image = base64;
 }
 
