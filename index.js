@@ -158,6 +158,21 @@ async function launchScreenShare() {
             return;
         }
 
+        const context = SillyTavern.getContext();
+
+        if (context.mainApi !== 'openai') {
+            toastr.warning('Screen sharing is only supported in Chat Completions.', 'Unsupported API');
+            return;
+        }
+
+        const imageInliningCheckbox = document.getElementById('openai_image_inlining');
+
+        if (imageInliningCheckbox instanceof HTMLInputElement) {
+            if (!imageInliningCheckbox.checked) {
+                toastr.warning('Image inlining is turned off. The screen share feature will not work.');
+            }
+        }
+
         // Get the video track
         const [videoTrack] = stream.getVideoTracks();
 
