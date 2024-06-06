@@ -9,7 +9,7 @@ Works only if the last chat message is from a user.
 Install via the SillyTavern extension installer.
 
 ```txt
-https://github.com/Cohee1207/Extension-ScreenShare
+https://github.com/SillyTavern/Extension-ScreenShare
 ```
 
 ## Prerequisites
