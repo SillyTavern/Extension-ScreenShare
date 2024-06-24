@@ -45,9 +45,12 @@ function updateUI() {
 }
 
 function createButton() {
-    const menu = document.getElementById('extensionsMenu');
+    const menu = document.getElementById('screen_share_wand_container') ?? document.getElementById('extensionsMenu');
+    menu.classList.add('interactable');
+    menu.tabIndex = 0;
     const extensionButton = document.createElement('div');
-    extensionButton.classList.add('list-group-item', 'flex-container', 'flexGap5');
+    extensionButton.classList.add('list-group-item', 'flex-container', 'flexGap5', 'interactable');
+    extensionButton.tabIndex = 0;
     const icon = document.createElement('i');
     icon.classList.add('fa-solid', 'fa-desktop');
     const text = document.createElement('span');
