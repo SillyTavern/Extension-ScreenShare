@@ -135,7 +135,7 @@ async function grabFrame(chat) {
 
     // Convert to base64 PNG string
     console.debug('launchScreenShare: converting canvas to base64');
-    const blob = await canvas.convertToBlob({ type: 'image/png', quality: 1 });
+    const blob = await canvas.convertToBlob({ type: 'image/jpeg', quality: 0.9 });
     const base64 = await new Promise((resolve) => {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result);
