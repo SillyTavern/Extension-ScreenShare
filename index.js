@@ -133,7 +133,7 @@ async function grabFrame(chat) {
     const context = canvas.getContext('2d');
     context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
 
-    // Convert to base64 PNG string
+    // Convert to base64 JPEG string
     console.debug('launchScreenShare: converting canvas to base64');
     const blob = await canvas.convertToBlob({ type: 'image/jpeg', quality: 0.9 });
     const base64 = await new Promise((resolve) => {
