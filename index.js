@@ -30,7 +30,8 @@ class ScreenShareSession {
  */
 let session = null;
 
-const { eventSource, event_types } = SillyTavern.getContext();
+const { eventSource, event_types, ensureMessageMediaIsArray } = SillyTavern.getContext();
+const supportsMediaArrays = typeof ensureMessageMediaIsArray === 'function';
 const canvas = new OffscreenCanvas(window.screen.width, window.screen.height);
 
 const button = createButton();
@@ -127,7 +128,7 @@ async function grabFrame(chat, _contextSize, _abort, type) {
         lastChatMessage.extra = {};
     }
 
-    if (lastChatMessage.extra.image) {
+    if (!supportsMediaArrays && lastChatMessage.extra.image) {
         console.debug('grabFrame: image already exists');
         return;
     }
@@ -156,7 +157,14 @@ async function grabFrame(chat, _contextSize, _abort, type) {
     });
 
     console.log('launchScreenShare: sending frame to chat');
-    lastChatMessage.extra.image = base64;
+    if (supportsMediaArrays) {
+        if (!Array.isArray(lastChatMessage.extra.images)) {
+            lastChatMessage.extra.images = [];
+        }
+        lastChatMessage.extra.images.push(base64);
+    } else {
+        lastChatMessage.extra.image = base64;
+    }
 }
 
 async function launchScreenShare() {
