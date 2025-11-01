@@ -158,10 +158,10 @@ async function grabFrame(chat, _contextSize, _abort, type) {
 
     console.log('launchScreenShare: sending frame to chat');
     if (supportsMediaArrays) {
-        if (!Array.isArray(lastChatMessage.extra.images)) {
-            lastChatMessage.extra.images = [];
+        if (!Array.isArray(lastChatMessage.extra.media)) {
+            lastChatMessage.extra.media = [];
         }
-        lastChatMessage.extra.images.push(base64);
+        lastChatMessage.extra.media.push({ url: base64, type: 'image' });
     } else {
         lastChatMessage.extra.image = base64;
     }
